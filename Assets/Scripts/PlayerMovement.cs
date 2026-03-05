@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 
 /// <summary>
@@ -7,26 +8,29 @@ public class PlayerMovement : MonoBehaviour
 {
     // Velocidad de movimiento del jugador
     public float speed;
+    public TextMeshProUGUI mergeCountText;
+   
+
 
     // Update se ejecuta una vez por frame
     private void Update()
     {
         // Comprobamos qué tecla se está pulsando para el movimiento del jugador
-        if (Input.GetKeyDown(KeyCode.W))
+        if (Input.GetKey(KeyCode.W))
         {
-            transform.Translate(Vector3.forward * speed);
+            transform.Translate(0, 0, speed * Time.deltaTime, Space.World);
         }
-        else if (Input.GetKeyDown(KeyCode.S))
+        else if (Input.GetKey(KeyCode.S))
         {
-            transform.Translate(Vector3.back * speed);
+            transform.Translate(0, 0, -speed * Time.deltaTime, Space.World);
         }
-        else if (Input.GetKeyDown(KeyCode.A))
+        else if (Input.GetKey(KeyCode.A))
         {
-            transform.Translate(Vector3.left * speed);
+            transform.Translate(-speed * Time.deltaTime, 0, 0, Space.World);
         }
-        else if (Input.GetKeyDown(KeyCode.D))
+        else if (Input.GetKey(KeyCode.D))
         {
-            transform.Translate(Vector3.right * speed);
+            transform.Translate(speed * Time.deltaTime, 0, 0, Space.World);
         }
     }
 }

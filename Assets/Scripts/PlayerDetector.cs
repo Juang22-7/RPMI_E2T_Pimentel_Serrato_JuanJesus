@@ -24,10 +24,11 @@ public class PlayerDetector : MonoBehaviour
     private void Update()
     {
         // Lanzamos un Raycast para detectar objetos mergeables
-        if (Physics.Raycast(transform.position, Vector3.up, detectionRange, LayerMask.GetMask("Mergeable")))
+        if (Physics.Raycast(transform.position, Vector3.forward, detectionRange, LayerMask.GetMask("Mergeable")))
         {
             if (!isHighlighted)
             {
+               
                 // Resalta al jugador cambiando su color
                 originalColor = playerMaterial.color;
                 playerMaterial.color = highlightColor;
@@ -38,6 +39,7 @@ public class PlayerDetector : MonoBehaviour
         {
             if (isHighlighted)
             {
+                
                 // Restaura el color original
                 playerMaterial.color = originalColor;
                 isHighlighted = false;
